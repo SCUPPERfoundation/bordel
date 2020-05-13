@@ -30,6 +30,13 @@ jobs:
     - name: Save DigitalOcean kubeconfig
       run: doctl kubernetes cluster kubeconfig save k8s-1-16-6-do-2-sfo2-1588357917119
 
+    - name: deploy postgres to cluster
+      uses: wahyd4/kubectl-helm-action@v0.1.2
+      with:
+        args: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm upgrade --install postgres -n data bitnami/postgresql
+
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f $GITHUB_WORKSPACE/deployment.yml
 
