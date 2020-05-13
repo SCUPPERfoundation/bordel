@@ -20,7 +20,7 @@ jobs:
         image-name: bordel
 
     - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|tennica/bordel:'${TAG}'|' $GITHUB_WORKSPACE/deployment.yml
+      run: TAG=$(echo $GITHUB_SHA | head -c3) && sed -i 's|<IMAGE>|tennica/bordel:'${TAG}'|' $GITHUB_WORKSPACE/deployment.yml
 
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
