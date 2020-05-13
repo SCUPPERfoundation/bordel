@@ -29,22 +29,6 @@ spec:
             cpu: 100m
           limits:
             cpu: 100m
-        env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: app-postgres
-              key: username
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: app-postgres
-              key: password
-        - name: POSTGRES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: app-postgres
-              key: privateIP
       imagePullSecrets:
       - name: gprlogin
 ---
