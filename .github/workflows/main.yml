@@ -37,7 +37,9 @@ jobs:
       with:
         args: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm upgrade --install -n bordel postgres bitnami/postgresql
+          helm upgrade --install -n bordel postgres \
+            --set postgresqlPassword=${{ secrets.POSTGRES_PASSWORD }},postgresqlDatabase=bordel \
+            bitnami/postgresql
 
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f $GITHUB_WORKSPACE/deployment.yml
