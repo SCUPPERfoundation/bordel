@@ -30,6 +30,12 @@ spec:
             cpu: 100m
           limits:
             cpu: 100m
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-postgresql
+                key: postgresql-password
       imagePullSecrets:
       - name: gprlogin
 ---
