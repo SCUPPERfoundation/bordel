@@ -1,4 +1,5 @@
 flask
 flask-sqlalchemy
+psycopg2
 bootstrap-flask
 uwsgi
