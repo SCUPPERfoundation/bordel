@@ -1,8 +1,11 @@
 from flask import render_template
 
 from . import app
+from .models.alpha import ReviewDoc
 
 @app.route('/')
-def hello_world():
-    hello = "Hello, World!"
-    return render_template('home.html', content=hello)
+def index():
+    page = 1 # shim. fully deal with pagination later
+    blobs = ReviewDoc.query.paginate(page)
+    return render_template('home.html')
+

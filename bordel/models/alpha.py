@@ -3,6 +3,6 @@ from sqlalchemy.ext.mutable import MutableDict
 
 from .. import db
 
-class ReviewDoc(db.model)
+class ReviewDoc(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     blob = db.Column(MutableDict.as_mutable(HSTORE))

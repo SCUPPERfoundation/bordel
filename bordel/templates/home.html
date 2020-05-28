@@ -1,3 +1,21 @@
 {% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+{% set pager = render_pagination(blobs) %}
 
-{% block content %}{{ content }}{% endblock %}
+{% block content %}
+    <h1>Blobs:</h1>
+    {{ pager }}
+    <table class="table table-striped">
+    <thead>
+        <th>id</th>
+        <th>blob</th>
+    </thead>
+    {% for doc in blobs %}
+        <tr>
+            <td>{{ doc.id }}</td>
+            <td>{{ doc.blob }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {{ pager }}
+{% endblock %}

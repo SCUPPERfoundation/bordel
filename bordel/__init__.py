@@ -11,6 +11,7 @@ try:
     DBPASS = os.environ.get('PGPASSWORD')
     DBURI = 'postgresql://postgres:'+DBPASS+'@'+DBHOST+'/'+__name__
     app.config['SQLALCHEMY_DATABASE_URI'] = DBURI
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 except:
     pass
 
