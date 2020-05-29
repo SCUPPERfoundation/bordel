@@ -10,7 +10,7 @@
         <th>id</th>
         <th>blob</th>
     </thead>
-    {% for doc in blobs %}
+    {% for doc in blobs.items %}
         <tr>
             <td>{{ doc.id }}</td>
             <td>{{ doc.blob }}</td>
