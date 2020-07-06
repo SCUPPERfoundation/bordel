@@ -3,9 +3,12 @@ import os
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.debug import DebuggedApplication
 
 app = Flask(__name__)
+app.wsgi_app = DebuggedApplication(app.wsgi_app, True)
 
+"""
 try:
     DBHOST = os.environ.get('POSTGRES_POSTGRESQL_SERVICE_HOST')
     DBPASS = os.environ.get('PGPASSWORD')
@@ -14,6 +17,20 @@ try:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 except:
     pass
+"""
+
+#app.config.from_object('bordel.default_settings')
+app.config['DBURI'] = os.environ.get('DBURI', None)
+app.config.from_envvar('BORDEL_SETTINGS', silent=True)
+app.config['SQLALCHEMY_DATABASE_URI'] = app.config['DBURI']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+if app.config['DEBUG']:
+    try:
+        from flask.ext.debugtoolbar import DebugToolbarExtension
+        DebugToolbarExtension(app)
+    except:
+        pass
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)

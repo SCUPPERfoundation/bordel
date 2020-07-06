@@ -1,5 +1,6 @@
 flask
 flask-sqlalchemy
+flask-debugtoolbar
 psycopg2
 bootstrap-flask
 uwsgi
