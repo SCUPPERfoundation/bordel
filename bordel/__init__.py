@@ -20,7 +20,7 @@ except:
 """
 
 #app.config.from_object('bordel.default_settings')
-app.config['DBURI'] = os.environ.get('DBURI', None)
+os.environ['BORDEL_SETTINGS'] = os.environ.get('BORDEL_SETTINGS', '.bordelrc')
 app.config.from_envvar('BORDEL_SETTINGS', silent=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = app.config['DBURI']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
