@@ -4,6 +4,7 @@ flask-debugtoolbar
 psycopg2
 bootstrap-flask
 readability-lxml
+bert-extractive-summarizer
 uwsgi
 tensorflow-hub
 numpy
