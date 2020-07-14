@@ -6,6 +6,7 @@ bootstrap-flask
 readability-lxml
 bert-extractive-summarizer
 uwsgi
+torch
 tensorflow-hub
 numpy
 scikit-learn
